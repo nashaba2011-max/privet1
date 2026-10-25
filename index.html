@@ -253,7 +253,8 @@ button.photo{transition:transform .3s var(--spring)}button.photo:hover{transform
 .confirm-box .acts{display:flex;gap:8px;flex-wrap:wrap}
 
 /* form */
-.typepick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.typepick{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:10px}
+.typepick .opt{text-align:center;line-height:1.25}
 .typepick label{position:relative;cursor:pointer}
 .typepick input{position:absolute;opacity:0;pointer-events:none}
 .typepick .opt{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border-radius:14px;background:var(--surface);box-shadow:var(--shadow);font-size:14px;font-weight:500;transition:box-shadow .25s,transform .25s var(--spring)}
@@ -308,6 +309,33 @@ button.photo{transition:transform .3s var(--spring)}button.photo:hover{transform
   opacity:0;transform:translateY(16px) scale(.96);transition:opacity .3s,transform .45s var(--spring);pointer-events:none;max-width:calc(100% - 32px);text-align:center}
 .toast.on{opacity:1;transform:none}
 
+/* new document types */
+.t-bank{background:radial-gradient(120% 140% at 100% 0%,#2e394d 0%,transparent 55%),linear-gradient(150deg,#1c2331,#0b0f16);color:#e8ecf3}
+.t-vehicle{background:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 7px),linear-gradient(150deg,#4a5862,#20292f);color:#eef2f4}
+.t-insurance{background:repeating-radial-gradient(circle at 100% 100%,rgba(255,255,255,.05) 0 1px,transparent 1px 11px),linear-gradient(150deg,#14726f,#073331);color:#e2f4f2}
+.t-residence{background:repeating-radial-gradient(circle at 85% 20%,rgba(255,255,255,.06) 0 1px,transparent 1px 8px),linear-gradient(150deg,#4a4290,#1e1a42);color:#ecebfb}
+.t-marriage{background:radial-gradient(90% 120% at 50% 0%,#fbf8ef,#efe6cf);color:#4a3a1c}
+.t-birth{background:radial-gradient(90% 120% at 50% 0%,#f6f9f4,#e1ebdd);color:#24402a}
+.t-lease{background:repeating-linear-gradient(0deg,rgba(75,59,46,.05) 0 1px,transparent 1px 12px),#f4f0ea;color:#4b3b2e}
+.t-other{background:var(--surface);color:var(--fg)}
+.t-marriage::after,.t-birth::after,.t-lease::after,.t-other::after{content:"";position:absolute;inset:7px;border:1px solid currentColor;opacity:.22;border-radius:12px;pointer-events:none;z-index:-1}
+.t-birth::after,.t-other::after{border-style:dashed}
+.t-marriage .cchip,.t-birth .cchip,.t-lease .cchip{background:rgba(0,0,0,.06)}
+.t-other .cchip{background:var(--surface-2)}
+.bg-bank{background:linear-gradient(160deg,#323d52,#111722)}.bg-marriage{background:linear-gradient(160deg,#c9a24f,#8a6a2a)}.bg-birth{background:linear-gradient(160deg,#5f9a69,#35663f)}
+.bg-vehicle{background:linear-gradient(160deg,#5b6a74,#2a343a)}.bg-insurance{background:linear-gradient(160deg,#1a8a86,#0a4542)}.bg-residence{background:linear-gradient(160deg,#5d54a8,#2b2560)}
+.bg-lease{background:linear-gradient(160deg,#a07b56,#6a4e33)}.bg-other{background:linear-gradient(160deg,#9a9aa2,#62626a)}
+.bank-mid{gap:8px}
+.emv{display:block;width:40px;height:30px;border-radius:7px;background:linear-gradient(90deg,transparent 30%,rgba(0,0,0,.18) 30% 32%,transparent 32% 68%,rgba(0,0,0,.18) 68% 70%,transparent 70%),linear-gradient(0deg,transparent 45%,rgba(0,0,0,.18) 45% 55%,transparent 55%),linear-gradient(135deg,#ead595,#b8954d);box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+.plate{align-self:flex-start;background:#fff;color:#111;border-radius:6px;padding:1px 14px 1px 12px;font-weight:700;font-size:clamp(16px,4.4vw,19px);letter-spacing:.06em;border-left:10px solid #ce1126;box-shadow:0 1px 3px rgba(0,0,0,.3);margin-bottom:4px;font-variant-numeric:tabular-nums}
+.mag{display:block;height:20%;margin:-2px -20px 0;background:#0b0b0b}
+.back-photo.paper img{object-fit:contain;background:#fff}
+.d-perm{background:var(--fg-3)}
+.tag.s-none{color:var(--fg-2);background:var(--surface-2)}
+.mmyy{flex:1;display:flex;gap:8px;align-items:center}
+.field .mmyy select{flex:none;width:auto;min-width:72px}
+.mmyy span{color:var(--fg-3)}
+
 /* flip (style 4: side flip, expo out, light sweep) */
 .flip-stage{perspective:1400px;cursor:pointer;border-radius:18px;-webkit-tap-highlight-color:transparent}
 .flipper{position:relative;aspect-ratio:85.6/53.98;transform-style:preserve-3d;will-change:transform}
@@ -359,6 +387,14 @@ button.photo{transition:transform .3s var(--spring)}button.photo:hover{transform
     <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4.5 6.5h15M9.5 6.5V4.5h5v2M6.5 6.5l1 13a1.5 1.5 0 0 0 1.5 1.4h6a1.5 1.5 0 0 0 1.5-1.4l1-13M10 10.5v6.5M14 10.5v6.5"/></symbol>
     <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.5"/><path d="M12 9v4l2.5 2M9.5 2.5h5"/></symbol>
     <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3.5l1.8 5.2 5.2 1.8-5.2 1.8L12 17.5l-1.8-5.2L5 10.5l5.2-1.8z"/><path d="M18.5 16.5l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 9.5h19M6 15h4"/></symbol>
+    <symbol id="i-rings" viewBox="0 0 24 24"><circle cx="9" cy="14.5" r="5.5"/><circle cx="15" cy="14.5" r="5.5"/><path d="M10.5 5L12 3.3 13.5 5 12 6.7z"/></symbol>
+    <symbol id="i-birth" viewBox="0 0 24 24"><path d="M12 20.5H7a2 2 0 0 1-2-2v-13a2 2 0 0 1 2-2h7l5 5V10"/><path d="M14 3.5v5h5M8.5 9h3.5M8.5 12.5h3"/><circle cx="17" cy="15" r="2.8"/><path d="M15.4 17.3l-.7 3.2 2.3-1 2.3 1-.7-3.2"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16.5v-3.2l1.8-4.6A2 2 0 0 1 7.7 7.5h8.6a2 2 0 0 1 1.9 1.2l1.8 4.6v3.2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M4.3 13h15.4M7.5 17.5V19M16.5 17.5V19M7 15h.01M17 15h.01"/></symbol>
+    <symbol id="i-umbrella" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 18 0z"/><path d="M12 12v6.5a2 2 0 0 1-4 0M12 3v.5"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path d="M21 3.5L3 10.5l7 3 3 7z"/><path d="M10 13.5l11-10"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 10.5L12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5H15v-6H9v6H5.5A1.5 1.5 0 0 1 4 19z"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3.5H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5z"/><path d="M14 3.5v5h5M8.5 13h7M8.5 16.5h5"/></symbol>
     <symbol id="i-flip" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.7M20 4v4.7h-4.7M20 12a8 8 0 0 1-13.7 5.6L4 15.3M4 20v-4.7h4.7"/></symbol>
     <symbol id="i-pdf" viewBox="0 0 24 24"><path d="M14 3.5H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5z"/><path d="M14 3.5v5h5M12 11.5v6M9.5 15l2.5 2.5 2.5-2.5"/></symbol>
     <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4.5 19.5h4l10-10a2.8 2.8 0 0 0-4-4l-10 10z"/><path d="M13.5 6.5l4 4"/></symbol>
@@ -376,7 +412,7 @@ button.photo{transition:transform .3s var(--spring)}button.photo:hover{transform
     </div>
     <div>
       <h1 id="lockTitle">وثائقي</h1>
-      <p class="lead" id="lockLead">جوازك وهويتك ورخصتك، مرتّبة ومشفّرة على جهازك.</p>
+      <p class="lead" id="lockLead">جوازك وهويتك وبطاقاتك وعقودك، مرتّبة ومشفّرة على جهازك.</p>
     </div>
 
     <form id="setupForm" hidden novalidate>
@@ -430,12 +466,7 @@ button.photo{transition:transform .3s var(--spring)}button.photo:hover{transform
       <button role="radio" data-f="soon">قريبة <small class="num" data-c="soon"></small></button>
       <button role="radio" data-f="expired">منتهية <small class="num" data-c="expired"></small></button>
     </div>
-    <div class="chips" id="typeChips" aria-label="النوع">
-      <button class="chip-btn" data-t="all" aria-pressed="true">كل الأنواع</button>
-      <button class="chip-btn" data-t="passport" aria-pressed="false"><svg class="i"><use href="#i-passport"/></svg>جواز السفر</button>
-      <button class="chip-btn" data-t="id" aria-pressed="false"><svg class="i"><use href="#i-id"/></svg>بطاقة الهوية</button>
-      <button class="chip-btn" data-t="license" aria-pressed="false"><svg class="i"><use href="#i-license"/></svg>رخصة القيادة</button>
-    </div>
+    <div class="chips" id="typeChips" aria-label="النوع"></div>
   </section>
 
   <section class="attention" id="attention" hidden>
@@ -463,11 +494,31 @@ button.photo{transition:transform .3s var(--spring)}button.photo:hover{transform
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const RM=matchMedia('(prefers-reduced-motion: reduce)');
 const TYPES={
-  passport:{label:'جواز السفر',en:'PASSPORT',remind:180,issuer:'شؤون الجنسية والجوازات والإقامة',icon:'i-passport'},
-  id:{label:'بطاقة الهوية',en:'IDENTITY CARD',remind:60,issuer:'هيئة المعلومات والحكومة الإلكترونية',icon:'i-id'},
-  license:{label:'رخصة القيادة',en:'DRIVING LICENCE',remind:60,issuer:'الإدارة العامة للمرور',icon:'i-license'}
+  passport:{label:'جواز السفر',en:'PASSPORT',remind:180,issuer:'شؤون الجنسية والجوازات والإقامة',icon:'i-passport',numPh:'BH0000000',
+    f:{name:'الاسم',number:'رقم الجواز',issuer:'الجهة المصدرة',country:'الدولة',issue:'تاريخ الإصدار',expiry:'تاريخ الانتهاء'}},
+  id:{label:'بطاقة الهوية',en:'IDENTITY CARD',remind:60,issuer:'هيئة المعلومات والحكومة الإلكترونية',icon:'i-id',numPh:'000000000',
+    f:{name:'الاسم',number:'الرقم الشخصي',issuer:'الجهة المصدرة',country:'الدولة',issue:'تاريخ الإصدار',expiry:'تاريخ الانتهاء'}},
+  license:{label:'رخصة القيادة',en:'DRIVING LICENCE',remind:60,issuer:'الإدارة العامة للمرور',icon:'i-license',numPh:'DL-0000000',
+    f:{name:'الاسم',number:'رقم الرخصة',issuer:'الجهة المصدرة',country:'الدولة',category:{label:'فئة الرخصة',ph:'خفيفة، دراجة نارية…'},issue:'تاريخ الإصدار',expiry:'تاريخ الانتهاء'}},
+  bank:{label:'بطاقة بنكية',en:'BANK CARD',remind:30,issuer:'بنك البحرين الوطني',icon:'i-card',numPh:'4821',bankExp:true,
+    f:{issuer:'البنك',name:'اسم حامل البطاقة',number:'آخر ٤ أرقام',category:{label:'نوع البطاقة',opts:['بطاقة سحب (بنفت)','بطاقة ائتمانية','فيزا','ماستركارد','أمريكان إكسبرس','بطاقة مسبقة الدفع']},expiry:'تاريخ الانتهاء'}},
+  marriage:{label:'عقد الزواج',en:'MARRIAGE CONTRACT',perm:true,issuer:'المحكمة الشرعية',icon:'i-rings',numPh:'2019/0000',
+    f:{name:'الزوج',name2:'الزوجة',number:'رقم العقد',issuer:'المحكمة / المأذون',issue:'تاريخ العقد'}},
+  birth:{label:'شهادة الميلاد',en:'BIRTH CERTIFICATE',perm:true,issuer:'وزارة الصحة',icon:'i-birth',numPh:'0000000',
+    f:{name:'الاسم',number:'رقم الشهادة',issue:'تاريخ الميلاد',extra:'مكان الميلاد',issuer:'الجهة المصدرة'}},
+  vehicle:{label:'ملكية المركبة',en:'VEHICLE REGISTRATION',remind:30,issuer:'الإدارة العامة للمرور',icon:'i-car',numPh:'000000',
+    f:{extra:'رقم اللوحة',category:{label:'نوع المركبة',ph:'تويوتا لاندكروزر 2022'},name:'المالك',number:'رقم الملكية',issuer:'الجهة المصدرة',expiry:'انتهاء التسجيل'}},
+  insurance:{label:'وثيقة تأمين',en:'INSURANCE POLICY',remind:30,issuer:'اسم شركة التأمين',icon:'i-umbrella',numPh:'POL-000000',
+    f:{category:{label:'نوع التأمين',opts:['صحي','سيارة','منزل','سفر','حياة','أخرى']},issuer:'شركة التأمين',number:'رقم الوثيقة',name:'المؤمَّن عليه',issue:'بداية التغطية',expiry:'نهاية التغطية'}},
+  residence:{label:'إقامة / تأشيرة',en:'VISA · RESIDENCE',remind:60,issuer:'السفارة أو جهة الإصدار',icon:'i-plane',numPh:'C0000000',
+    f:{category:{label:'النوع',opts:['تأشيرة سياحية','تأشيرة شنغن','تأشيرة عمل','تأشيرة دراسة','إقامة','أخرى']},country:'الدولة',name:'الاسم',number:'رقم التأشيرة',issuer:'الجهة المصدرة',issue:'تاريخ الإصدار',expiry:'تاريخ الانتهاء'}},
+  lease:{label:'عقد إيجار',en:'LEASE AGREEMENT',remind:60,issuer:'جهة التوثيق',icon:'i-home',numPh:'0000/2026',
+    f:{extra:'العنوان',name:'المؤجر',number:'رقم العقد',issuer:'جهة التوثيق',issue:'بداية العقد',expiry:'نهاية العقد'}},
+  other:{label:'نوع مخصّص',chip:'أخرى',en:'DOCUMENT',remind:60,optExpiry:true,issuer:'الجهة المصدرة',icon:'i-doc',numPh:'',
+    f:{custom:'اسم النوع',name:'الاسم',number:'الرقم',issuer:'الجهة المصدرة',issue:'تاريخ الإصدار',expiry:'تاريخ الانتهاء (اختياري)'}}
 };
-const STATUS={valid:'سارية',soon:'قريبة الانتهاء',expired:'منتهية',none:'بلا تاريخ'};
+const PAPER=new Set(['marriage','birth','lease','other']);
+const STATUS={valid:'سارية',soon:'قريبة الانتهاء',expired:'منتهية',none:'دائم'};
 const S={key:null,vault:null,f:'all',t:'all',q:'',volatile:false,last:Date.now(),timer:null};
 const ITER=310000;
 
@@ -487,12 +538,12 @@ function addDays(n){const d=today();d.setDate(d.getDate()+n);return iso(d)}
 const fmt=s=>{const d=pd(s);return d?DF.format(d):'—'};
 const fmtS=s=>{const d=pd(s);return d?DS.format(d):'—'};
 function daysLeft(doc){const e=pd(doc.expiry);return e?Math.round((e-today())/864e5):null}
-function remindOf(doc){return Number(doc.remind)||TYPES[doc.type].remind}
+function remindOf(doc){return Number(doc.remind)||TYPES[doc.type].remind||60}
 function status(doc){const d=daysLeft(doc);if(d===null)return'none';if(d<0)return'expired';if(d<=remindOf(doc))return'soon';return'valid'}
 function ar(n,f){if(n===1)return f[0];if(n===2)return f[1];if(n>=3&&n<=10)return n+' '+f[2];return n+' '+f[3]}
 const DAY=['يوم واحد','يومين','أيام','يومًا'],MON=['شهر واحد','شهرين','أشهر','شهرًا'],YR=['سنة واحدة','سنتين','سنوات','سنة'];
 function span(d){d=Math.abs(d);if(d<60)return ar(d,DAY);if(d<730)return ar(Math.round(d/30.44),MON);const y=Math.floor(d/365.25),m=Math.round((d-y*365.25)/30.44);return ar(y,YR)+(m>0&&m<12&&y<5?' و'+ar(m,MON):'')}
-function relText(doc){const d=daysLeft(doc);if(d===null)return'بلا تاريخ انتهاء';if(d<0)return'انتهت قبل '+span(d);if(d===0)return'تنتهي اليوم';return'تنتهي بعد '+span(d)}
+function relText(doc){const d=daysLeft(doc);if(d===null)return'مستند دائم';if(d<0)return'انتهت قبل '+span(d);if(d===0)return'تنتهي اليوم';return'تنتهي بعد '+span(d)}
 function progress(doc){const e=pd(doc.expiry),i=pd(doc.issue);if(!e)return 0;const st=i||new Date(e.getTime()-5*365.25*864e5);const p=(today()-st)/(e-st);return Math.max(0,Math.min(1,p))}
 function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2400)}
 async function copyText(txt,el){try{await navigator.clipboard.writeText(txt);toast('نُسخ')}catch(e){if(el&&el.select){el.focus();el.select();toast('حدّد النص وانسخه يدويًا')}else toast('تعذّر النسخ')}}
@@ -518,7 +569,9 @@ function demoDocs(){
   return[
     {id:uid(),type:'passport',demo:true,name:'محمد أحمد عبدالله',number:'BH4821937',issuer:TYPES.passport.issuer,country:'البحرين',issue:addDays(-3530),expiry:addDays(121),remind:180,notes:'جدّده قبل سفر الصيف.',images:{}},
     {id:uid(),type:'id',demo:true,name:'محمد أحمد عبدالله',number:'890412345',issuer:TYPES.id.issuer,country:'البحرين',issue:addDays(-640),expiry:addDays(1185),remind:60,notes:'',images:{}},
-    {id:uid(),type:'license',demo:true,name:'محمد أحمد عبدالله',number:'DL-5520918',issuer:TYPES.license.issuer,country:'البحرين',issue:addDays(-3672),expiry:addDays(-18),remind:60,category:'خفيفة',notes:'',images:{}}
+    {id:uid(),type:'license',demo:true,name:'محمد أحمد عبدالله',number:'DL-5520918',issuer:TYPES.license.issuer,country:'البحرين',issue:addDays(-3672),expiry:addDays(-18),remind:60,category:'خفيفة',notes:'',images:{}},
+    {id:uid(),type:'bank',demo:true,name:'MOHAMED A ABDULLA',number:'4821',issuer:'بنك البحرين الوطني',category:'فيزا',expiry:(()=>{const t=today();return iso(new Date(t.getFullYear(),t.getMonth()+35,0))})(),remind:30,notes:'',images:{}},
+    {id:uid(),type:'marriage',demo:true,name:'محمد أحمد عبدالله',name2:'فاطمة علي حسن',number:'2019/2214',issuer:'المحكمة الشرعية',issue:addDays(-2420),notes:'',images:{}}
   ];
 }
 
@@ -530,6 +583,7 @@ $$('[data-eye]').forEach(b=>b.addEventListener('click',()=>{const i=$('#'+b.data
 $('#pw1').addEventListener('input',e=>$('#strength').dataset.s=strength(e.target.value));
 
 async function boot(){
+  $('#typeChips').innerHTML=`<button class="chip-btn" data-t="all" aria-pressed="true">كل الأنواع</button>`+Object.entries(TYPES).map(([k,T])=>`<button class="chip-btn" data-t="${k}" aria-pressed="false">${ic(T.icon)}${T.chip||T.label}</button>`).join('');
   S.dl=undefined;
   const localDl={save:async({filename,data})=>{const u=URL.createObjectURL(data instanceof Blob?data:new Blob([data]));const a=document.createElement('a');a.href=u;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);return{status:'saved'}}};
   if(window.claude&&window.claude.use){window.claude.use('downloads').then(n=>{S.dl=n;if(!n)$$('[data-pdf]').forEach(b=>b.hidden=true)},()=>{S.dl=null})}else S.dl=localDl;
@@ -585,46 +639,62 @@ function mrz(doc){
   const yy=s=>{const d=pd(s);return d?String(d.getFullYear()).slice(2)+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0'):'<<<<<<'};
   return ('P<'+cc).padEnd(44,'<')+'   '+(n+'<'+cc+yy(doc.issue)+'<'+yy(doc.expiry)).padEnd(44,'<');
 }
+function title(d){const T=TYPES[d.type];if(d.type==='other')return d.custom||'مستند';if(d.type==='bank')return d.issuer||T.label;
+  if(d.type==='insurance'&&d.category&&d.category!=='أخرى')return'تأمين '+d.category;if(d.type==='residence'&&d.category&&d.category!=='أخرى')return d.category;return T.label}
+function nameLine(d){return[d.name,d.type==='marriage'?d.name2:''].filter(Boolean).join(' · ')}
+function subLine(d){switch(d.type){case'vehicle':return d.category||d.issuer||'';case'lease':case'birth':return d.extra||d.issuer||'';
+  case'residence':return[d.country,d.issuer].filter(Boolean).join(' · ');case'bank':return d.category||'';default:return d.issuer||''}}
+function numLabel(d){return d.type==='bank'?'رقم البطاقة':TYPES[d.type].f.number}
+function numShow(d){return d.number?(d.type==='bank'?'•••• '+d.number:d.number):'—'}
+function mmYY(s){const d=pd(s);return d?String(d.getMonth()+1).padStart(2,'0')+'/'+String(d.getFullYear()).slice(2):'—'}
+function dateField(d){const T=TYPES[d.type];if(d.expiry)return[T.bankExp?'صالحة حتى':'تاريخ الانتهاء',T.bankExp?mmYY(d.expiry):fmtS(d.expiry)];
+  if(d.issue)return[T.f.issue||'تاريخ الإصدار',fmtS(d.issue)];return['','']}
 function cardHTML(doc,i,tag='button'){
-  const T=TYPES[doc.type],st=status(doc),p=Math.round(progress(doc)*100);
+  const T=TYPES[doc.type],st=status(doc),p=Math.round(progress(doc)*100),[dl,dv]=dateField(doc),ttl=title(doc);
   const photos=['front','back'].filter(k=>doc.images&&doc.images[k]).length;
-  return `<${tag} class="doc-card t-${doc.type}" ${tag==='button'?`data-open="${doc.id}" aria-label="${esc(T.label)}، ${esc(doc.name||'')}، ${STATUS[st]}"`:''} style="--i:${i}">
+  const pb=photos?` · <span class="photo-badge">${ic('i-image')}${photos}</span>`:'';
+  let mid;
+  if(doc.type==='bank')mid=`<span class="c-mid bank-mid"><span class="emv"></span><span class="c-issuer">${esc([doc.name,doc.category].filter(Boolean).join(' · '))}${pb}</span></span>`;
+  else if(doc.type==='vehicle'&&doc.extra)mid=`<span class="c-mid"><span class="plate" dir="ltr">${esc(doc.extra)}</span><span class="c-issuer">${esc(subLine(doc))}${pb}</span></span>`;
+  else mid=`<span class="c-mid"><span class="c-name">${esc(nameLine(doc)||'بدون اسم')}</span><span class="c-issuer">${esc(subLine(doc))}${pb}</span></span>`;
+  const foot=doc.type==='passport'?`<span class="mrz" aria-hidden="true">${esc(mrz(doc))}</span>`:doc.expiry?`<span class="c-bar" aria-hidden="true"><i style="width:${p}%"></i></span>`:'';
+  return `<${tag} class="doc-card t-${doc.type}" ${tag==='button'?`data-open="${doc.id}" aria-label="${esc(ttl)}، ${esc(nameLine(doc))}، ${STATUS[st]}"`:''} style="--i:${i}">
     <span class="sheen"></span>
-    <span class="c-top"><span class="c-type">${ic(T.icon)}<span><b>${T.label}</b><small>${T.en}</small></span></span><span class="cchip s-${st}"><i></i>${STATUS[st]}</span></span>
+    <span class="c-top"><span class="c-type">${ic(T.icon)}<span><b>${esc(ttl)}</b><small>${T.en}</small></span></span><span class="cchip s-${st}"><i></i>${STATUS[st]}</span></span>
     ${doc.demo?'<span class="demo-tag">تجريبي</span>':''}
-    <span class="c-mid"><span class="c-name">${esc(doc.name||'بدون اسم')}</span><span class="c-issuer">${esc(doc.issuer||'')}${photos?` · <span class="photo-badge">${ic('i-image')}${photos}</span>`:''}</span></span>
-    <span class="c-bottom"><span class="c-field"><small>رقم المستند</small><b dir="ltr">${esc(doc.number||'—')}</b></span><span class="c-field end"><small>تاريخ الانتهاء</small><b dir="ltr">${fmtS(doc.expiry)}</b></span></span>
-    ${doc.type==='passport'?`<span class="mrz" aria-hidden="true">${esc(mrz(doc))}</span>`:`<span class="c-bar" aria-hidden="true"><i style="width:${p}%"></i></span>`}
+    ${mid}
+    <span class="c-bottom"><span class="c-field"><small>${esc(numLabel(doc))}</small><b dir="ltr">${esc(numShow(doc))}</b></span>${dl?`<span class="c-field end"><small>${dl}</small><b dir="ltr">${dv}</b></span>`:''}</span>
+    ${foot}
   </${tag}>`;
 }
 function matches(doc){
   if(S.t!=='all'&&doc.type!==S.t)return false;
-  if(S.f!=='all'&&status(doc)!==S.f)return false;
+  if(S.f!=='all'){const s=status(doc);if((s==='none'?'valid':s)!==S.f)return false}
   const q=S.q.trim().toLowerCase();if(!q)return true;
-  return [doc.name,doc.number,doc.issuer,doc.country,doc.notes,doc.category,TYPES[doc.type].label].some(v=>String(v||'').toLowerCase().includes(q));
+  return [doc.name,doc.name2,doc.number,doc.issuer,doc.country,doc.notes,doc.category,doc.extra,doc.custom,title(doc),TYPES[doc.type].label].some(v=>String(v||'').toLowerCase().includes(q));
 }
 function sortDocs(a){return a.sort((x,y)=>{const dx=daysLeft(x),dy=daysLeft(y);return(dx??1e9)-(dy??1e9)})}
 function render(){
   if(!S.vault)return;const docs=S.vault.docs;
   const c={all:0,valid:0,soon:0,expired:0};
-  docs.forEach(d=>{if(S.t==='all'||d.type===S.t){c.all++;const s=status(d);if(c[s]!=null)c[s]++}});
+  docs.forEach(d=>{if(S.t==='all'||d.type===S.t){c.all++;const s=status(d);c[s==='none'?'valid':s]++}});
   $$('[data-c]').forEach(el=>el.textContent=c[el.dataset.c]||'');
-  const all={valid:0,soon:0,expired:0};docs.forEach(d=>{const s=status(d);if(all[s]!=null)all[s]++});
+  const all={valid:0,soon:0,expired:0,none:0};docs.forEach(d=>{const s=status(d);if(all[s]!=null)all[s]++});
   const n=docs.length;
   $('#summary').innerHTML=n?`<span class="num">${n===1?'مستند واحد':n===2?'مستندان':n<=10?n+' مستندات':n+' مستندًا'}</span>`+
     (all.valid?`<span><i class="dot d-valid"></i><span class="num">${all.valid}</span> سارية</span>`:'')+
     (all.soon?`<span><i class="dot d-soon"></i><span class="num">${all.soon}</span> قريبة الانتهاء</span>`:'')+
-    (all.expired?`<span><i class="dot d-expired"></i><span class="num">${all.expired}</span> منتهية</span>`:''):'<span>لا توجد مستندات بعد</span>';
+    (all.expired?`<span><i class="dot d-expired"></i><span class="num">${all.expired}</span> منتهية</span>`:'')+(all.none?`<span><i class="dot d-perm"></i><span class="num">${all.none}</span> دائمة</span>`:''):'<span>لا توجد مستندات بعد</span>';
 
   const att=sortDocs(docs.filter(d=>['soon','expired'].includes(status(d))));
   $('#attention').hidden=!att.length||S.q||S.f!=='all';
-  $('#attList').innerHTML=att.map(d=>{const st=status(d);return`<button class="row" data-open="${d.id}"><span class="ic bg-${d.type}">${ic(TYPES[d.type].icon)}</span><span class="tx"><b>${TYPES[d.type].label} · ${esc(d.name||'')}</b><small>${relText(d)} · ${fmt(d.expiry)}</small></span><span class="tag s-${st}">${STATUS[st]}</span>${ic('i-chev','i chev')}</button>`}).join('');
+  $('#attList').innerHTML=att.map(d=>{const st=status(d);return`<button class="row" data-open="${d.id}"><span class="ic bg-${d.type}">${ic(TYPES[d.type].icon)}</span><span class="tx"><b>${esc(title(d))} · ${esc(nameLine(d))}</b><small>${relText(d)} · ${fmt(d.expiry)}</small></span><span class="tag s-${st}">${STATUS[st]}</span>${ic('i-chev','i chev')}</button>`}).join('');
 
   const list=sortDocs(docs.filter(matches));
   $('#walletCount').textContent=list.length&&list.length!==n?`${list.length} من ${n}`:'';
   $('#wallet').innerHTML=list.map((d,i)=>cardHTML(d,i)).join('');
   const em=$('#empty');
-  if(!n){em.hidden=false;em.innerHTML=`<div class="ghost-card">${ic('i-plus')}</div><h2>أضف مستندك الأول</h2><p>صوّر جوازك أو هويتك أو رخصتك، واحفظ رقمه وتاريخ انتهائه. سننبّهك قبل الموعد.</p><button class="btn" data-add>${ic('i-plus')}إضافة مستند</button>`}
+  if(!n){em.hidden=false;em.innerHTML=`<div class="ghost-card">${ic('i-plus')}</div><h2>أضف مستندك الأول</h2><p>صوّر جوازك أو بطاقتك أو عقدك، واحفظ رقمه وتواريخه. سننبّهك قبل الموعد.</p><button class="btn" data-add>${ic('i-plus')}إضافة مستند</button>`}
   else if(!list.length){em.hidden=false;em.innerHTML=`<h2>لا توجد نتائج</h2><p>لا يوجد مستند يطابق البحث أو التصفية الحالية.</p><button class="btn ghost sm" data-clear>مسح التصفية</button>`}
   else em.hidden=true;
   bindTilt();
@@ -683,10 +753,10 @@ $('#viewerX').addEventListener('click',closeViewer);$('#viewer').addEventListene
 function openDetail(id){
   const d=S.vault.docs.find(x=>x.id===id);if(!d)return;const T=TYPES[d.type],st=status(d),dl=daysLeft(d),p=progress(d);
   const passNote=d.type==='passport'&&dl!==null&&dl>=0&&dl<=183;
-  const rows=[['رقم المستند',d.number,true],['الاسم',d.name],['الجهة المصدرة',d.issuer],['الدولة',d.country],d.type==='license'?['فئة الرخصة',d.category]:null,['تاريخ الإصدار',d.issue?fmt(d.issue):''],['تاريخ الانتهاء',fmt(d.expiry)],['التذكير','قبل الانتهاء بـ'+(remindOf(d)>=60?' '+ar(Math.round(remindOf(d)/30),MON):' '+ar(remindOf(d),DAY))],['ملاحظات',d.notes]].filter(r=>r&&r[1]);
+  const rows=rowsOf(d);
   const img=k=>d.images&&d.images[k]?`<button class="photo" data-view="${k}"><img src="${d.images[k]}" alt="${k==='front'?'الوجه الأمامي':'الوجه الخلفي'}"><span class="cap">${k==='front'?'الأمامي':'الخلفي'}</span></button>`:`<div class="photo">${k==='front'?'لا توجد صورة أمامية':'لا توجد صورة خلفية'}</div>`;
   openSheet(`
-    <div class="sh-head"><button class="txt-btn" data-close>إغلاق</button><h2 id="sheetTitle">${T.label}</h2><button class="txt-btn strong" data-edit>تعديل</button></div>
+    <div class="sh-head"><button class="txt-btn" data-close>إغلاق</button><h2 id="sheetTitle">${esc(title(d))}</h2><button class="txt-btn strong" data-edit>تعديل</button></div>
     <div class="sh-body">
       <div>
         <div class="flip-stage" data-flip role="button" tabindex="0" aria-pressed="false" aria-label="اقلب البطاقة لعرض الوجه الآخر">
@@ -698,12 +768,13 @@ function openDetail(id){
         <p class="flip-hint">${ic('i-flip')}<span id="flipHint">اضغط على البطاقة لرؤية الوجه الخلفي</span></p>
       </div>
       <div class="status-block"><p class="big s-${st}">${relText(d)}</p>
-        <div class="timeline"><div class="track s-${st}"><i style="width:0%" data-w="${Math.round(p*100)}"></i></div>
-        <div class="tl-labels"><span>${d.issue?'صدر '+fmt(d.issue):'تاريخ الإصدار غير مسجّل'}</span><span>${'ينتهي '+fmt(d.expiry)}</span></div></div>
+        ${d.expiry?`<div class="timeline"><div class="track s-${st}"><i style="width:0%" data-w="${Math.round(p*100)}"></i></div>
+        <div class="tl-labels"><span>${d.issue?(T.f.issue||'صدر')+' '+fmt(d.issue):(T.f.issue?'البداية غير مسجّلة':'')}</span><span>${'ينتهي '+(T.bankExp?mmYY(d.expiry):fmt(d.expiry))}</span></div></div>`
+        :`<div class="tl-labels" style="justify-content:center">${d.issue?(T.f.issue||'تاريخ الإصدار')+': '+fmt(d.issue):'لا ينتهي هذا المستند'}</div>`}
       </div>
       ${passNote?`<div class="note">${ic('i-warn')}<span>كثير من الدول تشترط أن يبقى الجواز صالحًا ستة أشهر على الأقل من تاريخ الوصول. راجع شرط وجهتك قبل الحجز.</span></div>`:''}
       ${st==='expired'?`<div class="note" style="background:var(--bad-bg)">${ic('i-warn')}<span>هذا المستند منتهي. جدّده لدى ${esc(d.issuer||'الجهة المصدرة')} ثم حدّث التاريخ هنا.</span></div>`:''}
-      <div class="list">${rows.map(r=>`<div class="kv"><span>${r[0]}</span><b ${r[2]?'dir="ltr" class="num"':''}>${esc(r[1])}</b>${r[2]?`<button class="copy" data-copy="${esc(r[1])}" aria-label="نسخ الرقم">${ic('i-copy')}</button>`:''}</div>`).join('')}</div>
+      <div class="list">${rows.map(r=>`<div class="kv"><span>${r[0]}</span><b ${r[2]?'dir="ltr" class="num"':''}>${esc(r[1])}</b>${r[2]?`<button class="copy" data-copy="${esc(r[2])}" aria-label="نسخ الرقم">${ic('i-copy')}</button>`:''}</div>`).join('')}</div>
       <div><p class="group-label">الصور</p><div class="photos">${img('front')}${img('back')}</div></div>
       <div class="actions-row" style="grid-template-columns:1fr"><button class="btn" data-pdf ${S.dl===null?'hidden':''}>${ic('i-pdf')}حفظ كملف PDF</button></div>
       <div class="danger-zone" id="dz"><button class="btn ghost" data-del style="color:var(--bad)">${ic('i-trash')}حذف المستند</button></div>
@@ -718,7 +789,7 @@ function openDetail(id){
     const pb=e.target.closest('[data-pdf]');if(pb)return savePdf(d,pb);
     const c=e.target.closest('[data-copy]');if(c)return copyText(c.dataset.copy);
     const v=e.target.closest('[data-view]');if(v)return openViewer(d.images[v.dataset.view]);
-    if(e.target.closest('[data-del]')){$('#dz').innerHTML=`<div class="confirm-box"><p>سيُحذف «${esc(T.label)}» وصوره من هذا الجهاز نهائيًا.</p><div class="acts"><button class="btn danger sm" data-del-yes>حذف</button><button class="btn ghost sm" data-del-no>إلغاء</button></div></div>`;return}
+    if(e.target.closest('[data-del]')){$('#dz').innerHTML=`<div class="confirm-box"><p>سيُحذف «${esc(title(d))}» وصوره من هذا الجهاز نهائيًا.</p><div class="acts"><button class="btn danger sm" data-del-yes>حذف</button><button class="btn ghost sm" data-del-no>إلغاء</button></div></div>`;return}
     if(e.target.closest('[data-del-no]')){$('#dz').innerHTML=`<button class="btn ghost" data-del style="color:var(--bad)">${ic('i-trash')}حذف المستند</button>`;return}
     if(e.target.closest('[data-del-yes]')){S.vault.docs=S.vault.docs.filter(x=>x.id!==id);persist().then(()=>{closeSheet();render();toast('حُذف المستند')});}
   };
@@ -726,16 +797,25 @@ function openDetail(id){
 
 /* back face + flip */
 function codeOf(d){const n=(d.number||'').toUpperCase().replace(/[^A-Z0-9]/g,'');const cc=/البحرين|bahrain/i.test(d.country||'')?'BHR':'XXX';
-  const pre=d.type==='passport'?'P<':d.type==='id'?'ID':'DL';return (pre+cc+n).padEnd(30,'<')}
+  const pre={passport:'P<',id:'ID',license:'DL',bank:'CB',vehicle:'VR',insurance:'IN',residence:'VS',lease:'LS',marriage:'MC',birth:'BC'}[d.type]||'DC';return (pre+cc+n).padEnd(30,'<')}
 function barSeq(str){const s=(str||'0000').split('').map(c=>c.charCodeAt(0)),out=[];for(let i=0;i<s.length*5;i++){out.push(1+(s[i%s.length]*(i+3))%3)}return out}
 function barcodeSVG(str){let x=0,r='';barSeq(str).forEach((w,i)=>{if(i%2===0)r+=`<rect x="${x}" y="0" width="${w}" height="24"/>`;x+=w+1});return`<svg class="barcode" viewBox="0 0 ${x} 24" preserveAspectRatio="none" fill="currentColor" aria-hidden="true">${r}</svg>`}
+function rowsOf(d){const T=TYPES[d.type],F=T.f,rows=[];
+  if(d.type==='other'&&d.custom)rows.push(['النوع',d.custom]);
+  for(const [k,lab] of Object.entries(F)){if(k==='custom')continue;let v=d[k];if(!v)continue;const L=(typeof lab==='object'?lab.label:lab).replace(' (اختياري)','');
+    if(k==='issue')v=fmt(v);else if(k==='expiry')v=T.bankExp?mmYY(v):fmt(v);else if(k==='number'&&d.type==='bank')v='•••• '+v;
+    rows.push([L,v,k==='number'?d.number:null])}
+  if(d.expiry)rows.push(['التذكير','قبل الانتهاء بـ'+(remindOf(d)>=60?' '+ar(Math.round(remindOf(d)/30),MON):' '+ar(remindOf(d),DAY))]);
+  if(d.notes)rows.push(['ملاحظات',d.notes]);return rows}
+function backRows(d){const T=TYPES[d.type],F=T.f,skip=new Set(['name','number','expiry','custom']);if(d.type==='marriage')skip.add('name2');if(d.type==='vehicle')skip.add('extra');if(d.type==='bank')skip.add('category');
+  const r=[];for(const [k,lab] of Object.entries(F)){if(skip.has(k))continue;let v=d[k];if(!v)continue;if(k==='issue')v=fmtS(v);r.push([typeof lab==='object'?lab.label:lab,v])}
+  if(d.expiry&&r.length<4)r.push(['التذكير','قبل '+(remindOf(d)>=60?Math.round(remindOf(d)/30)+' أشهر':remindOf(d)+' يومًا')]);
+  if(!r.length)r.push([F.name||'الاسم',nameLine(d)||'—']);return r.slice(0,4)}
 function backHTML(d){
-  const T=TYPES[d.type];
-  if(d.images&&d.images.back)return`<div class="doc-card t-${d.type} back-photo"><img src="${d.images.back}" alt="صورة الوجه الخلفي"><span class="sweep"></span></div>`;
-  const f=[['الجهة المصدرة',d.issuer||'—'],['تاريخ الإصدار',d.issue?fmtS(d.issue):'—'],['الدولة',d.country||'—'],d.type==='license'?['الفئة',d.category||'—']:['التذكير','قبل '+(remindOf(d)>=60?Math.round(remindOf(d)/30)+' أشهر':remindOf(d)+' يومًا')]];
+  if(d.images&&d.images.back)return`<div class="doc-card t-${d.type} back-photo${PAPER.has(d.type)?' paper':''}"><img src="${d.images.back}" alt="صورة الوجه الخلفي"><span class="sweep"></span></div>`;
   return`<div class="doc-card t-${d.type} card-back"><span class="sheen"></span><span class="sweep"></span>
-    <span class="cb-top"><b>${T.label}</b><small>الوجه الخلفي · لا توجد صورة</small></span>
-    <span class="cb-grid">${f.map(([k,v])=>`<span><small>${k}</small><b>${esc(v)}</b></span>`).join('')}</span>
+    ${d.type==='bank'?'<span class="mag"></span>':`<span class="cb-top"><b>${esc(title(d))}</b><small>الوجه الخلفي · لا توجد صورة</small></span>`}
+    <span class="cb-grid">${backRows(d).map(([k,v])=>`<span><small>${esc(k)}</small><b>${esc(v)}</b></span>`).join('')}</span>
     <span class="cb-foot">${barcodeSVG(d.number)}<span class="mrz">${esc(codeOf(d))}</span></span></div>`;
 }
 function flipCard(stage){
@@ -750,29 +830,38 @@ function flipCard(stage){
 }
 
 /* PDF: A4 page, both faces at true ID-1 size (85.6 × 53.98 mm) */
-const PAL={passport:{a:'#7c2439',b:'#2b0812',fg:'#e9cf93'},id:{a:'#eef3f9',b:'#c9d6e6',fg:'#16233a'},license:{a:'#2c6a5b',b:'#0f2924',fg:'#e3f1ec'}};
+const PAL={passport:{a:'#7c2439',b:'#2b0812',fg:'#e9cf93'},id:{a:'#eef3f9',b:'#c9d6e6',fg:'#16233a'},license:{a:'#2c6a5b',b:'#0f2924',fg:'#e3f1ec'},
+  bank:{a:'#2b3547',b:'#0b0f16',fg:'#e8ecf3'},vehicle:{a:'#4a5862',b:'#20292f',fg:'#eef2f4'},insurance:{a:'#14726f',b:'#073331',fg:'#e2f4f2'},residence:{a:'#4a4290',b:'#1e1a42',fg:'#ecebfb'},
+  marriage:{a:'#fbf8ef',b:'#efe6cf',fg:'#4a3a1c',paper:1},birth:{a:'#f6f9f4',b:'#e1ebdd',fg:'#24402a',paper:1},lease:{a:'#f7f3ee',b:'#ebe3d8',fg:'#4b3b2e',paper:1},other:{a:'#f4f4f7',b:'#dedee4',fg:'#1d1d1f',paper:1}};
 const CF='-apple-system,"SF Arabic","IBM Plex Sans Arabic",Tahoma,sans-serif';
 function rrect(x,c,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
 function loadImg(src){return new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=src})}
-async function drawFace(c,x,y,w,h,d,side){
-  const P=PAL[d.type],T=TYPES[d.type],r=h*.075,pad=w*.06,src=d.images&&d.images[side];
+async function drawFace(c,x,y,w,h,d,side,fit){
+  const P=PAL[d.type]||PAL.other,T=TYPES[d.type],r=Math.min(w,h)*.075,pad=w*.06,src=d.images&&d.images[side];
   c.save();rrect(x,c,y,w,h,r);c.clip();
-  if(src){const im=await loadImg(src);const s=Math.max(w/im.width,h/im.height),iw=im.width*s,ih=im.height*s;c.drawImage(im,x+(w-iw)/2,y+(h-ih)/2,iw,ih)}
+  const txt=(t,sz,wt,xx,yy,al='right',alpha=1,dir='rtl')=>{if(!t)return;c.globalAlpha=alpha;c.font=`${wt} ${sz}px ${CF}`;c.textAlign=al;c.direction=dir;c.fillText(String(t),xx,yy,w-pad*2);c.globalAlpha=1};
+  if(src){const im=await loadImg(src);
+    if(fit==='contain'){c.fillStyle='#f5f5f7';c.fillRect(x,y,w,h);const s=Math.min(w/im.width,h/im.height),iw=im.width*s,ih=im.height*s;c.drawImage(im,x+(w-iw)/2,y+(h-ih)/2,iw,ih)}
+    else{const s=Math.max(w/im.width,h/im.height),iw=im.width*s,ih=im.height*s;c.drawImage(im,x+(w-iw)/2,y+(h-ih)/2,iw,ih)}}
   else{
     const g=c.createLinearGradient(x,y,x+w,y+h);g.addColorStop(0,P.a);g.addColorStop(1,P.b);c.fillStyle=g;c.fillRect(x,y,w,h);
-    c.fillStyle=P.fg;c.direction='rtl';c.textAlign='right';c.textBaseline='alphabetic';const R=x+w-pad,L=x+pad;
-    const txt=(t,sz,wt,xx,yy,al='right',alpha=1,dir='rtl')=>{c.globalAlpha=alpha;c.font=`${wt} ${sz}px ${CF}`;c.textAlign=al;c.direction=dir;c.fillText(t,xx,yy);c.globalAlpha=1};
+    if(P.paper){c.save();c.globalAlpha=.25;c.strokeStyle=P.fg;c.lineWidth=Math.max(1,h*.007);if(d.type==='birth'||d.type==='other')c.setLineDash([h*.03,h*.02]);rrect(x+h*.05,c,y+h*.05,w-h*.1,h-h*.1,r*.6);c.stroke();c.restore()}
+    c.fillStyle=P.fg;const R=x+w-pad,L=x+pad;
     if(side==='front'){
-      txt(T.label,h*.085,600,R,y+h*.17);txt(T.en,h*.045,500,R,y+h*.24,'right',.75,'ltr');
-      txt(d.name||'',h*.11,600,R,y+h*.52);txt(d.issuer||'',h*.05,400,R,y+h*.61,'right',.75);
-      txt('رقم المستند',h*.045,400,R,y+h*.78,'right',.7);txt(d.number||'—',h*.075,600,R,y+h*.88,'right',1,'ltr');
-      txt('تاريخ الانتهاء',h*.045,400,L,y+h*.78,'left',.7);txt(fmtS(d.expiry),h*.075,600,L,y+h*.88,'left',1,'ltr');
+      txt(title(d),h*.085,600,R,y+h*.17);txt(T.en,h*.045,500,R,y+h*.24,'right',.75,'ltr');
+      if(d.type==='bank'){const cw=w*.13,ch=h*.17,cx=R-cw,cy=y+h*.34,gg=c.createLinearGradient(cx,cy,cx+cw,cy+ch);gg.addColorStop(0,'#ead595');gg.addColorStop(1,'#b8954d');c.fillStyle=gg;rrect(cx,c,cy,cw,ch,ch*.2);c.fill();c.fillStyle=P.fg;
+        txt([d.name,d.category].filter(Boolean).join(' · '),h*.06,500,R,y+h*.64,'right',.85)}
+      else if(d.type==='vehicle'&&d.extra){const pw=w*.38,ph=h*.15,px=R-pw,py=y+h*.33;c.fillStyle='#ffffff';rrect(px,c,py,pw,ph,ph*.15);c.fill();c.fillStyle='#ce1126';c.fillRect(px,py,pw*.1,ph);
+        c.fillStyle='#111';c.font=`700 ${ph*.7}px ${CF}`;c.direction='ltr';c.textAlign='center';c.fillText(d.extra,px+pw*.55,py+ph*.76,pw*.85);c.fillStyle=P.fg;txt(subLine(d),h*.055,400,R,y+h*.62,'right',.8)}
+      else{txt(nameLine(d),h*.1,600,R,y+h*.52);txt(subLine(d),h*.05,400,R,y+h*.61,'right',.75)}
+      txt(numLabel(d),h*.045,400,R,y+h*.78,'right',.7);txt(numShow(d),h*.075,600,R,y+h*.88,'right',1,'ltr');
+      const [dl,dv]=dateField(d);if(dl){txt(dl,h*.045,400,L,y+h*.78,'left',.7);txt(dv,h*.075,600,L,y+h*.88,'left',1,'ltr')}
     }else{
-      txt(T.label,h*.075,600,R,y+h*.16);txt('الوجه الخلفي',h*.045,400,L,y+h*.16,'left',.7);
-      const rows=[['الجهة المصدرة',d.issuer||'—'],['تاريخ الإصدار',d.issue?fmtS(d.issue):'—'],['الدولة',d.country||'—']];
-      rows.forEach(([k,v],i)=>{txt(k,h*.045,400,R,y+h*(.3+i*.14),'right',.7);txt(v,h*.06,600,R,y+h*(.37+i*.14))});
-      let bx=L;const bw=w*.006;barSeq(d.number).forEach((u,i)=>{if(bx>x+w*.6)return;if(i%2===0)c.fillRect(bx,y+h*.72,u*bw,h*.1);bx+=(u+1)*bw});
-      c.font=`500 ${h*.045}px ui-monospace,Menlo,monospace`;c.direction='ltr';c.textAlign='left';c.globalAlpha=.55;c.fillText(codeOf(d),L,y+h*.92);c.globalAlpha=1;
+      if(d.type==='bank'){c.fillStyle='#0b0b0b';c.fillRect(x,y+h*.1,w,h*.18);c.fillStyle=P.fg}
+      else{txt(title(d),h*.075,600,R,y+h*.16);txt('الوجه الخلفي',h*.045,400,L,y+h*.16,'left',.7)}
+      backRows(d).slice(0,3).forEach(([k,v],i)=>{txt(k,h*.045,400,R,y+h*(.38+i*.12),'right',.7);txt(v,h*.058,600,R,y+h*(.44+i*.12))});
+      let bx=L;const bw=w*.006;barSeq(d.number).forEach((u,i)=>{if(bx>x+w*.6)return;if(i%2===0)c.fillRect(bx,y+h*.74,u*bw,h*.09);bx+=(u+1)*bw});
+      c.font=`500 ${h*.045}px ui-monospace,Menlo,monospace`;c.direction='ltr';c.textAlign='left';c.globalAlpha=.55;c.fillText(codeOf(d),L,y+h*.92,w-pad*2);c.globalAlpha=1;
     }
   }
   c.restore();c.save();rrect(x,c,y,w,h,r);c.lineWidth=2;c.strokeStyle='rgba(0,0,0,.18)';c.stroke();c.restore();
@@ -782,20 +871,29 @@ async function savePdf(d,btn){
   busy(btn,true,'جارٍ التجهيز');
   try{
     try{await document.fonts.ready}catch(e){}
-    const MM=7.874,W=Math.round(210*MM),H=Math.round(297*MM),cv=document.createElement('canvas');cv.width=W;cv.height=H;const c=cv.getContext('2d');
-    c.fillStyle='#ffffff';c.fillRect(0,0,W,H);const T=TYPES[d.type];
-    c.fillStyle='#1d1d1f';c.direction='rtl';c.textAlign='right';c.font=`700 ${7*MM}px ${CF}`;c.fillText(T.label+(d.name?' — '+d.name:''),W-20*MM,28*MM);
-    c.fillStyle='#6e6e73';c.font=`400 ${3.8*MM}px ${CF}`;c.fillText(`رقم المستند: ${d.number||'—'}   ·   تاريخ الإصدار: ${d.issue?fmt(d.issue):'—'}   ·   تاريخ الانتهاء: ${fmt(d.expiry)}`,W-20*MM,36*MM);
+    const T=TYPES[d.type],P=PAL[d.type]||PAL.other,MM=7.874,W=Math.round(210*MM),H=Math.round(297*MM),cv=document.createElement('canvas');cv.width=W;cv.height=H;const c=cv.getContext('2d');
+    c.fillStyle='#ffffff';c.fillRect(0,0,W,H);
+    c.fillStyle='#1d1d1f';c.direction='rtl';c.textAlign='right';c.font=`700 ${7*MM}px ${CF}`;c.fillText(title(d)+(nameLine(d)?' — '+nameLine(d):''),W-20*MM,28*MM,W-40*MM);
+    const meta=[numLabel(d)+': '+numShow(d),T.f.issue&&d.issue?T.f.issue+': '+fmt(d.issue):'',d.expiry?(T.bankExp?'صالحة حتى: '+mmYY(d.expiry):'تاريخ الانتهاء: '+fmt(d.expiry)):(T.f.expiry?'':'مستند دائم')].filter(Boolean).join('   ·   ');
+    c.fillStyle='#6e6e73';c.font=`400 ${3.8*MM}px ${CF}`;c.fillText(meta,W-20*MM,36*MM,W-40*MM);
     c.strokeStyle='#d2d2d7';c.lineWidth=2;c.beginPath();c.moveTo(20*MM,42*MM);c.lineTo(W-20*MM,42*MM);c.stroke();
-    const cw=85.6*MM,ch=53.98*MM,cx=(W-cw)/2;
-    for(const [side,label,top] of [['front','الوجه الأمامي',58],['back','الوجه الخلفي',140]]){
-      c.fillStyle='#6e6e73';c.textAlign='right';c.direction='rtl';c.font=`500 ${3.6*MM}px ${CF}`;c.fillText(label,cx+cw,(top-4)*MM);
-      await drawFace(c,cx,top*MM,cw,ch,d,side);
-      c.save();c.setLineDash([2*MM,1.5*MM]);c.strokeStyle='#c7c7cc';c.lineWidth=1.5;rrect(cx-2*MM,c,top*MM-2*MM,cw+4*MM,ch+4*MM,5*MM);c.stroke();c.restore();
+    const cw=85.6*MM,ch=53.98*MM,big=P.paper&&d.images&&(d.images.front||d.images.back);
+    const lab=(t,xr,yy)=>{c.fillStyle='#6e6e73';c.textAlign='right';c.direction='rtl';c.font=`500 ${3.6*MM}px ${CF}`;c.fillText(t,xr,yy)};
+    if(big){const bw=170*MM,bh=100*MM,bx=20*MM;
+      for(const [side,label,top] of [['front','الوجه الأمامي',56],['back','الوجه الخلفي',168]]){
+        lab(label,bx+bw,(top-4)*MM);
+        if(d.images[side])await drawFace(c,bx,top*MM,bw,bh,d,side,'contain');else await drawFace(c,(W-cw)/2,top*MM+(bh-ch)/2,cw,ch,d,side);
+      }
+    }else{const cx=(W-cw)/2;
+      for(const [side,label,top] of [['front','الوجه الأمامي',58],['back','الوجه الخلفي',140]]){
+        lab(label,cx+cw,(top-4)*MM);await drawFace(c,cx,top*MM,cw,ch,d,side);
+        c.save();c.setLineDash([2*MM,1.5*MM]);c.strokeStyle='#c7c7cc';c.lineWidth=1.5;rrect(cx-2*MM,c,top*MM-2*MM,cw+4*MM,ch+4*MM,5*MM);c.stroke();c.restore();
+      }
     }
-    c.fillStyle='#8e8e93';c.textAlign='center';c.font=`400 ${3.2*MM}px ${CF}`;c.fillText('مقاس البطاقة الفعلي 85.6 × 53.98 ملم. للاستخدام الشخصي، أُنشئ من تطبيق وثائقي في '+DF.format(new Date())+'.',W/2,285*MM);
+    c.fillStyle='#8e8e93';c.textAlign='center';c.font=`400 ${3.2*MM}px ${CF}`;
+    c.fillText((big?'صور المستند كما رُفعت.':'مقاس البطاقة الفعلي 85.6 × 53.98 ملم.')+' للاستخدام الشخصي، أُنشئ من تطبيق وثائقي في '+DF.format(new Date())+'.',W/2,285*MM,W-40*MM);
     const pdf=new window.jspdf.jsPDF({unit:'mm',format:'a4',compress:true});pdf.addImage(cv.toDataURL('image/jpeg',.92),'JPEG',0,0,210,297);
-    const blob=pdf.output('blob'),name=`${T.en.replace(/\s+/g,'-')}-${(d.number||'document').replace(/[^\w-]/g,'')}.pdf`;
+    const blob=pdf.output('blob'),name=`${T.en.replace(/[^A-Za-z]+/g,'-')}-${(d.number||'document').replace(/[^\w-]/g,'')||'document'}.pdf`;
     const dl=S.dl!==undefined?S.dl:(window.claude&&window.claude.use?await window.claude.use('downloads'):null);
     if(!dl){toast('الحفظ غير متاح في هذا العرض.');btn.hidden=true;return}
     await dl.save({filename:name,data:blob});toast('حُفظ ملف PDF');
@@ -805,37 +903,55 @@ async function savePdf(d,btn){
 }
 
 /* form */
+const FKEYS=['name','name2','number','issuer','country','category','extra','custom','issue','expiry'];
+function fieldsHTML(t,d){
+  const T=TYPES[t],F=T.f,ph={name:'كما هو في المستند',name2:'كما هو في العقد',country:'البحرين',custom:'شهادة جامعية، ضمان جهاز…',extra:t==='vehicle'?'123456':t==='lease'?'شقة 22، مجمع 612، سترة':'المنامة'};
+  const txt=[],dates=[];
+  for(const [k,lab] of Object.entries(F)){
+    const label=typeof lab==='object'?lab.label:lab;
+    if(k==='issue'){dates.push(`<div class="field" id="fl-issue"><label for="f-issue">${label}</label><input id="f-issue" type="date" value="${esc(d.issue||'')}"></div>`);continue}
+    if(k==='expiry'){
+      if(T.bankExp){const e=pd(d.expiry),m=e?e.getMonth()+1:0,y=e?e.getFullYear():0,Y=new Date().getFullYear();
+        dates.push(`<div class="field" id="fl-expiry"><label for="f-em">${label}</label><span class="mmyy"><select id="f-em" aria-label="شهر الانتهاء"><option value="">الشهر</option>${Array.from({length:12},(_,i)=>`<option value="${i+1}" ${m===i+1?'selected':''}>${String(i+1).padStart(2,'0')}</option>`).join('')}</select><span>/</span><select id="f-ey" aria-label="سنة الانتهاء"><option value="">السنة</option>${Array.from({length:16},(_,i)=>Y-3+i).map(v=>`<option value="${v}" ${y===v?'selected':''}>${v}</option>`).join('')}</select></span></div>`)}
+      else dates.push(`<div class="field" id="fl-expiry"><label for="f-expiry">${label}</label><input id="f-expiry" type="date" value="${esc(d.expiry||'')}"></div>`);
+      continue}
+    if(typeof lab==='object'&&lab.opts){txt.push(`<div class="field" id="fl-${k}"><label for="f-${k}">${label}</label><select id="f-${k}"><option value="">اختر</option>${lab.opts.map(o=>`<option ${d[k]===o?'selected':''}>${o}</option>`).join('')}</select></div>`);continue}
+    const isNum=k==='number',bank=t==='bank'&&isNum,ltr=isNum||(t==='vehicle'&&k==='extra');
+    const p=typeof lab==='object'?(lab.ph||''):(k==='issuer'?T.issuer:isNum?T.numPh:ph[k]||'');
+    txt.push(`<div class="field" id="fl-${k}"><label for="f-${k}">${label}</label><input id="f-${k}" value="${esc(d[k]||'')}" placeholder="${esc(p)}"${ltr?' dir="ltr" class="num" autocomplete="off" style="text-align:right"':''}${bank?' inputmode="numeric" maxlength="4"':''}${k==='name'?' autocomplete="name"':''}></div>`);
+  }
+  if(F.expiry){const remOpts=[[30,'شهر واحد'],[60,'شهرين'],[90,'ثلاثة أشهر'],[180,'ستة أشهر']],rv=Number(d.remind)||T.remind;
+    dates.push(`<div class="field"><label for="f-remind">ذكّرني قبل</label><select id="f-remind">${remOpts.map(([v,l])=>`<option value="${v}" ${rv===v?'selected':''}>${l}</option>`).join('')}</select></div>`)}
+  return `<div class="list">${txt.join('')}</div>${dates.length?`<div class="list">${dates.join('')}</div>`:''}${t==='bank'?'<p class="foot-note" style="margin-top:-12px">لا يُحفظ رقم البطاقة كاملًا ولا الرمز الخلفي (CVV). آخر ٤ أرقام تكفي لتمييز البطاقة.</p>':''}${T.perm?'<p class="foot-note" style="margin-top:-12px">مستند دائم بلا تاريخ انتهاء، فلن يظهر في التنبيهات.</p>':''}`;
+}
 function openForm(id){
   const ex=id?S.vault.docs.find(x=>x.id===id):null;
-  const d=ex?JSON.parse(JSON.stringify(ex)):{type:S.t!=='all'?S.t:'passport',name:'',number:'',issuer:'',country:'',issue:'',expiry:'',remind:'',category:'',notes:'',images:{}};
+  const d=ex?JSON.parse(JSON.stringify(ex)):{type:S.t!=='all'?S.t:'passport',notes:'',images:{}};
   if(!d.images)d.images={};
-  const remOpts=[[30,'شهر واحد'],[60,'شهرين'],[90,'ثلاثة أشهر'],[180,'ستة أشهر']];
   const drop=k=>`<label class="drop" data-drop="${k}">${d.images[k]?`<img src="${d.images[k]}" alt=""><button type="button" class="rm" data-rm="${k}" aria-label="إزالة الصورة">${ic('i-x')}</button>`:`${ic('i-camera')}<span>${k==='front'?'الوجه الأمامي':'الوجه الخلفي'}</span><small style="font-size:11px;color:var(--fg-3)">التقط صورة أو اختر ملفًا</small>`}<input type="file" accept="image/*" data-file="${k}" aria-label="${k==='front'?'صورة الوجه الأمامي':'صورة الوجه الخلفي'}"></label>`;
   openSheet(`
     <form id="docForm" novalidate>
     <div class="sh-head"><button type="button" class="txt-btn" data-close>إلغاء</button><h2 id="sheetTitle">${ex?'تعديل المستند':'مستند جديد'}</h2><button type="submit" class="txt-btn strong">حفظ</button></div>
     <div class="sh-body">
-      <div class="typepick" role="radiogroup" aria-label="نوع المستند">${Object.entries(TYPES).map(([k,T])=>`<label><input type="radio" name="type" value="${k}" ${d.type===k?'checked':''}><span class="opt"><span class="ic bg-${k}">${ic(T.icon)}</span>${T.label}</span></label>`).join('')}</div>
+      <div class="typepick" role="radiogroup" aria-label="نوع المستند">${Object.entries(TYPES).map(([k,T])=>`<label><input type="radio" name="type" value="${k}" ${d.type===k?'checked':''}><span class="opt"><span class="ic bg-${k}">${ic(T.icon)}</span>${T.chip||T.label}</span></label>`).join('')}</div>
       <div><div class="drops">${drop('front')}${drop('back')}</div><p class="err" id="imgErr" style="margin-top:6px"></p></div>
-      <div class="list">
-        <div class="field"><label for="f-name">الاسم</label><input id="f-name" value="${esc(d.name)}" placeholder="كما هو في المستند" autocomplete="name"></div>
-        <div class="field" id="fl-number"><label for="f-number">رقم المستند</label><input id="f-number" dir="ltr" class="num" value="${esc(d.number)}" placeholder="BH0000000" autocomplete="off" style="text-align:right"></div>
-        <div class="field"><label for="f-issuer">الجهة المصدرة</label><input id="f-issuer" value="${esc(d.issuer)}" placeholder="${esc(TYPES[d.type].issuer)}"></div>
-        <div class="field"><label for="f-country">الدولة</label><input id="f-country" value="${esc(d.country)}" placeholder="البحرين"></div>
-        <div class="field" id="fl-cat" ${d.type==='license'?'':'hidden'}><label for="f-cat">فئة الرخصة</label><input id="f-cat" value="${esc(d.category)}" placeholder="خفيفة، دراجة نارية…"></div>
-      </div>
-      <div><div class="list">
-        <div class="field" id="fl-issue"><label for="f-issue">تاريخ الإصدار</label><input id="f-issue" type="date" value="${esc(d.issue)}"></div>
-        <div class="field" id="fl-expiry"><label for="f-expiry">تاريخ الانتهاء</label><input id="f-expiry" type="date" value="${esc(d.expiry)}" required></div>
-        <div class="field"><label for="f-remind">ذكّرني قبل</label><select id="f-remind">${remOpts.map(([v,l])=>`<option value="${v}" ${remindOf(d)===v?'selected':''}>${l}</option>`).join('')}</select></div>
-      </div><p class="field-err" id="dateErr" role="alert"></p></div>
-      <div class="list"><div class="field"><label for="f-notes">ملاحظات</label><textarea id="f-notes" placeholder="اختياري">${esc(d.notes)}</textarea></div></div>
+      <div class="sh-body" id="fieldsBox">${fieldsHTML(d.type,d)}</div>
+      <p class="field-err" id="formErr" role="alert" style="margin-top:-14px"></p>
+      <div class="list"><div class="field"><label for="f-notes">ملاحظات</label><textarea id="f-notes" placeholder="اختياري">${esc(d.notes||'')}</textarea></div></div>
       <p class="foot-note">تُحفظ الصور والبيانات مشفّرة على هذا الجهاز فقط.</p>
     </div></form>`);
-  const sh=$('#sheet'),form=$('#docForm');
-  const typeVal=()=>form.querySelector('[name=type]:checked').value;
+  const sh=$('#sheet'),form=$('#docForm');let cur=d.type;
+  const collect=()=>{const g=k=>{const e=$('#f-'+k,sh);return e?e.value.trim():null};
+    ['name','name2','number','issuer','country','category','extra','custom','issue'].forEach(k=>{const v=g(k);if(v!==null)d[k]=v});
+    const em=$('#f-em',sh),ey=$('#f-ey',sh);
+    if(em&&ey)d.expiry=em.value&&ey.value?iso(new Date(+ey.value,+em.value,0)):'';else{const v=g('expiry');if(v!==null)d.expiry=v}
+    const r=g('remind');if(r!==null)d.remind=Number(r);d.notes=$('#f-notes',sh).value.trim()};
   form.addEventListener('change',e=>{
-    if(e.target.name==='type'){const t=e.target.value;$('#fl-cat').hidden=t!=='license';$('#f-issuer').placeholder=TYPES[t].issuer;if(!ex)$('#f-remind').value=String(TYPES[t].remind)}
+    if(e.target.name!=='type')return;
+    collect();const t=e.target.value;if(t==='bank'&&!/^\d{4}$/.test(d.number||''))d.number='';
+    if(!ex)d.remind=TYPES[t].remind;cur=t;d.type=t;
+    const box=$('#fieldsBox');box.innerHTML=fieldsHTML(t,d);$('#formErr').textContent='';
+    if(window.gsap&&!RM.matches)gsap.from(box.children,{y:10,opacity:0,duration:.45,ease:'expo.out',stagger:.05,clearProps:'all'});
   });
   const refreshDrop=k=>{const el=$(`[data-drop="${k}"]`,sh);const tmp=document.createElement('div');tmp.innerHTML=drop(k);el.replaceWith(tmp.firstElementChild)};
   async function takeFile(k,file){
@@ -852,16 +968,19 @@ function openForm(id){
     const rm=e.target.closest('[data-rm]');if(rm){e.preventDefault();delete d.images[rm.dataset.rm];refreshDrop(rm.dataset.rm)}
   };
   form.addEventListener('submit',async e=>{
-    e.preventDefault();
-    const v=x=>$('#f-'+x).value.trim();
-    const issue=$('#f-issue').value,expiry=$('#f-expiry').value,err=$('#dateErr');
+    e.preventDefault();collect();
+    const t=cur,T=TYPES[t],F=T.f,err=$('#formErr');
     $$('.field.bad',sh).forEach(f=>f.classList.remove('bad'));err.textContent='';
-    if(!expiry){$('#fl-expiry').classList.add('bad');err.textContent='أدخل تاريخ الانتهاء حتى نحسب الحالة ونذكّرك.';$('#f-expiry').focus();return}
-    if(issue&&pd(issue)>=pd(expiry)){$('#fl-issue').classList.add('bad');err.textContent='تاريخ الإصدار يجب أن يكون قبل تاريخ الانتهاء.';return}
-    if(!v('number')&&!v('name')){$('#fl-number').classList.add('bad');err.textContent='أدخل رقم المستند أو الاسم على الأقل.';$('#f-number').focus();return}
-    const t=typeVal();
-    const out={...d,id:ex?ex.id:uid(),type:t,name:v('name'),number:v('number'),issuer:v('issuer'),country:v('country'),category:t==='license'?v('cat'):'',issue,expiry,remind:Number($('#f-remind').value),notes:$('#f-notes').value.trim(),updated:Date.now()};
-    if(ex){out.demo=false;S.vault.docs=S.vault.docs.map(x=>x.id===ex.id?out:x)}else S.vault.docs.push(out);
+    const bad=(k,msg)=>{const f=$('#fl-'+k,sh);if(f)f.classList.add('bad');err.textContent=msg;const i=$('#f-'+(k==='expiry'&&T.bankExp?'em':k),sh);if(i)i.focus()};
+    const out={id:ex?ex.id:uid(),type:t,demo:false,images:d.images,notes:d.notes,updated:Date.now()};
+    FKEYS.forEach(k=>out[k]=k in F?(d[k]||''):'');
+    out.remind=F.expiry?(Number(d.remind)||T.remind):0;
+    if(t==='other'&&!out.custom)return bad('custom','اكتب اسم النوع، مثل «شهادة جامعية».');
+    if(t==='bank'&&out.number&&!/^\d{4}$/.test(out.number))return bad('number','أدخل آخر ٤ أرقام من البطاقة فقط.');
+    if(F.expiry&&!T.optExpiry&&!out.expiry)return bad('expiry','أدخل '+(T.bankExp?'شهر وسنة الانتهاء':F.expiry)+' حتى نحسب الحالة ونذكّرك.');
+    if(out.issue&&out.expiry&&pd(out.issue)>=pd(out.expiry))return bad('issue',F.issue+' يجب أن يكون قبل '+F.expiry.replace(' (اختياري)','')+'.');
+    if(!out.number&&!out.name)return bad('number','أدخل '+F.number+' أو '+F.name+' على الأقل.');
+    if(ex)S.vault.docs=S.vault.docs.map(x=>x.id===ex.id?out:x);else S.vault.docs.push(out);
     const btn=form.querySelector('[type=submit]');btn.disabled=true;
     try{await persist()}catch(x){btn.disabled=false;err.textContent='تعذّر الحفظ. قد تكون مساحة التخزين ممتلئة؛ جرّب صورًا أقل.';return}
     render();toast(ex?'حُفظت التعديلات':'أُضيف المستند');openDetail(out.id);
